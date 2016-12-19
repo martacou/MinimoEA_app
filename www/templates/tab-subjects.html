@@ -1,0 +1,35 @@
+<ion-view view-title="Subjects">
+  <ion-content>
+
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Order by
+      </div>
+      <select ng-model="orden">
+        <option value="">Alphabetical </option>
+        <option value="-">Alphabetical inverse</option>
+        <option value="-students.length">Number of students</option>
+        <option value="students.length">Number of students inverse</option>
+      </select>
+    </label>
+    <ion-list>
+      <ion-item ng-repeat="subject in subjects | orderBy:orden" style="padding: 0px"  class="item-text-wrap">
+        <div class="row">
+          <div class="col col-90">
+            <ion-item href="#/tab/subjects/{{subject._id}}" style="border-color: transparent">
+              <div class="col">
+                <h2>{{ subject.name }}</h2>
+                <p>{{ subject.when}}</p>
+                <p>Students: {{subject.students.length}}</p>
+              </div>
+            </ion-item>
+
+          </div>
+          <div class="col col-10">
+            <button class="button button-clear button-small button-assertive" style="padding-top: 2em" ng-click="DeleteSubject(subject._id)"><i class="icon ion-close-round"></i></button>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

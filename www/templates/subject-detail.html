@@ -1,0 +1,41 @@
+<ion-view view-title="{{subject.name}}">
+  <ion-content class="padding">
+    <div class="list card">
+      <div align="center">
+        <h1>{{subject.name}}</h1>
+        <p>{{subject.when}}</p>
+      </div>
+
+    </div>
+    <ion-list>
+      <h3>Students: </h3>
+      <ion-item ng-repeat="student in subjectstudents" style="padding: 0px"  class="item-text-wrap">
+        <div class="row">
+          <div class="col col-90">
+            <h3>{{ student.name }}</h3>
+          </div>
+          <div class="col col-10">
+            <button class="button button-clear button-small button-assertive" ng-click="DeleteStudentSubject(student._id)"><i class="icon ion-minus-round"></i></button>
+          </div>
+        </div>
+      </ion-item>
+      <p ng-if="subjectstudents.length == 0">No students</p>
+    </ion-list>
+    <br>
+    <br>
+    <ion-list>
+      <h3>Add Student: </h3>
+      <ion-item ng-repeat="student in students" style="padding: 0px" class="item-text-wrap">
+        <div class="row">
+          <div class="col col-90">
+            <h3>{{ student.name }}</h3>
+          </div>
+          <div class="col col-10">
+            <button class="button button-clear button-small button-positive" ng-click="AddStudentInSubject(student._id)"><i class="icon ion-plus-round"></i></button>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
